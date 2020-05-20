@@ -10,7 +10,9 @@ socket.on('message', (message) => {
 
 button.addEventListener('click', (e) => {
     const message = input.value
-    socket.emit('sendMessage', message)
+    socket.emit('sendMessage', message, () => {
+        console.log('The message was delivered!');
+    })
 })
 
 locationButton.addEventListener('click', (e) => {
