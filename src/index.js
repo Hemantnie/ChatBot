@@ -20,10 +20,16 @@ let count = 0
 io.on('connection', (socket) => {
     console.log("New web socket conncetion : WELCOME");
 
-    socket.emit('message', 'New Conncetion : WELCOME USER')
+    socket.emit('message', 'Welcome!')
+    //will send a message to all the clients except this
+    socket.broadcast.emit('message', 'A new user has joined')
 
     socket.on('sendMessage', (message) => {
         io.emit('message', message)
+    })
+
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user has left')
     })
 })
 

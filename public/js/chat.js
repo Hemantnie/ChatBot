@@ -7,13 +7,7 @@ socket.on('message', (message) => {
     console.log(message);
 })
 
-// button.addEventListener('click', (e) => {
-//     const message = input.value
-//     socket.emit('sendMessage', message)
-// })
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+button.addEventListener('click', (e) => {
     const message = input.value
     socket.emit('sendMessage', message)
 })
