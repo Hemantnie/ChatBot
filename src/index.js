@@ -31,6 +31,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         io.emit('message', 'A user has left')
     })
+
+    socket.on('sendLocation', (coords) => {
+        io.emit('message', `Location : ${coords.latitude}, ${coords.longitude}`)
+    })
 })
 
 server.listen(port, () => {
